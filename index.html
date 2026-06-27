@@ -10,7 +10,6 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- REVISI 1: Premium Luxury Typography (Outfit & Plus Jakarta Sans) -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <link rel="preload" as="image" href="laundry-karpet-antar-jemput-surabaya.webp" type="image/webp" fetchpriority="high">
@@ -124,7 +123,7 @@
         .brand-text { font-family: var(--font-heading); font-size: 1.15rem; font-weight: 800; color: #fff; letter-spacing: -0.5px; }
         .highlight-brand { color: var(--cta-orange); text-shadow: 0 0 15px rgba(249, 115, 22, 0.4); }
 
-        /* REVISI 5: AURA BUILD MODERN BUTTONS */
+        /* AURA BUILD MODERN BUTTONS */
         .btn-aura {
             position: relative;
             display: inline-flex;
@@ -212,7 +211,7 @@
         .usp-card h3 { font-size: 1.25rem; color: #fff; margin-bottom: 0.75rem; }
         .usp-card p { color: var(--text-sub); font-size: 0.95rem; }
 
-        /* REVISI 4: SERVICE SILO GRID (Perfect Image Aspect) */
+        /* SERVICE SILO GRID */
         .grid-services { display: grid; grid-template-columns: 1fr; gap: 2rem; }
         @media(min-width: 768px) { .grid-services { grid-template-columns: repeat(2, 1fr); } }
         @media(min-width: 1024px) { .grid-services { grid-template-columns: repeat(3, 1fr); } }
@@ -220,7 +219,6 @@
         .service-card { background: var(--bg-glass); border: 1px solid var(--border-glass); backdrop-filter: blur(20px); border-radius: 1rem; overflow: hidden; transition: 0.3s; display: flex; flex-direction: column; }
         .service-card:hover { border-color: var(--accent-blue); transform: translateY(-8px); box-shadow: 0 10px 25px rgba(59, 130, 246, 0.15); }
         
-        /* Fix for Image Aspect Ratio */
         .service-img { width: 100%; aspect-ratio: 16/9; object-fit: contain; background-color: #01060e; display: block; border-bottom: 1px solid rgba(255,255,255,0.05); }
         
         .service-body { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; }
@@ -234,57 +232,68 @@
         .porto-item img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8); transition: 0.5s; }
         .porto-item:hover img { filter: brightness(1.1); transform: scale(1.08); }
 
-        /* REVISI 6: AURA BUILD PRICING CARD */
+        /* EYE-CATCHING PRICING CARD FIX */
         .pricing-section-wrapper { display: flex; justify-content: center; align-items: center; width: 100%; padding: 2rem 0; }
         .aura-pricing-card {
             position: relative;
-            transition: all 0.3s duration;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             border-radius: 1.5rem;
-            padding: 2rem;
+            padding: 2.5rem 2rem;
             width: 100%;
-            max-width: 22rem;
-            background-color: hsla(240, 15%, 9%, 1);
-            background-image: radial-gradient(at 88% 40%, hsla(240, 15%, 9%, 1) 0px, transparent 85%), 
-                              radial-gradient(at 49% 30%, hsla(240, 15%, 9%, 1) 0px, transparent 85%), 
-                              radial-gradient(at 14% 26%, hsla(240, 15%, 9%, 1) 0px, transparent 85%), 
-                              radial-gradient(at 0% 64%, hsla(263, 93%, 56%, 1) 0px, transparent 85%), 
-                              radial-gradient(at 41% 94%, hsla(284, 100%, 84%, 1) 0px, transparent 85%), 
-                              radial-gradient(at 100% 99%, hsla(306, 100%, 57%, 1) 0px, transparent 85%);
-            box-shadow: inset 0 -16px 24px 0px rgba(255, 255, 255, 0.25);
+            max-width: 24rem;
+            background: rgba(10, 25, 47, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
             z-index: 1;
-            border: 1px solid rgba(255,255,255,0.05);
+            overflow: hidden;
         }
-        .aura-pricing-card:hover { background-color: rgba(255,255,255,0.04); transform: translateY(-5px); }
-        .apc-bg-layer {
-            overflow: hidden; pointer-events: none; position: absolute; z-index: -10;
-            top: 50%; left: 50%; transform: translate(-50%, -50%);
-            width: calc(100% + 2px); height: calc(100% + 2px);
-            background-image: linear-gradient(0deg, hsl(0, 0%, 100%) -50%, hsl(0, 0%, 40%) 100%);
-            border-radius: 1.5rem;
+        .aura-pricing-card:hover { 
+            transform: translateY(-8px); 
+            border-color: rgba(6, 182, 212, 0.6);
+            box-shadow: 0 30px 60px -12px rgba(6, 182, 212, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
-        .apc-rotator {
-            content: ''; pointer-events: none; position: absolute; z-index: 200;
-            top: 50%; left: 50%; transform-origin: left;
-            width: 200%; height: 10rem;
-            background-image: linear-gradient(0deg, hsla(0, 0%, 100%, 0) 0%, hsl(277, 95%, 60%) 40%, hsl(277, 95%, 60%) 60%, hsla(0, 0%, 40%, 0) 100%);
-            animation: rotateAura 8s linear infinite;
+        
+        .apc-glow {
+            position: absolute;
+            top: 0; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150%; height: 150px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.4) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: -1;
         }
-        @keyframes rotateAura { to { transform: translate(-50%, -50%) rotate(360deg); } }
-        .apc-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
-        .apc-title-box { display: flex; align-items: center; gap: 0.75rem; }
-        .apc-icon { height: 2.5rem; width: 2.5rem; border-radius: 0.75rem; border: 1px solid rgba(255,255,255,0.2); background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(20, 184, 166, 0.2)); display: flex; align-items: center; justify-content: center; color: #34d399; }
-        .apc-title h3 { font-size: 1.25rem; font-weight: 600; color: #fff; letter-spacing: -0.025em; line-height: 1.2; }
-        .apc-title p { font-size: 0.75rem; color: #737373; margin-top: 0.1rem; }
-        .apc-radio { height: 1.25rem; width: 1.25rem; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3); }
-        .apc-price-box { margin-bottom: 1.5rem; }
-        .apc-price-box .price { font-size: 2.5rem; font-weight: 700; color: #fff; letter-spacing: -0.025em; }
-        .apc-price-box .unit { font-size: 0.875rem; color: #a3a3a3; margin-left: 0.25rem; }
-        .apc-price-box .desc { font-size: 0.75rem; color: #737373; margin-top: 0.25rem; display: block; }
-        .apc-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.875rem; color: #d4d4d4; }
-        .apc-list li { display: flex; align-items: flex-start; gap: 0.75rem; }
-        .apc-list-icon { display: flex; justify-content: center; align-items: center; width: 1rem; height: 1rem; background-color: hsl(266, 92%, 58%); border-radius: 50%; flex-shrink: 0; margin-top: 0.2rem; }
+        
+        .apc-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem; }
+        .apc-title-box { display: flex; align-items: center; gap: 1rem; }
+        .apc-icon { 
+            height: 3rem; width: 3rem; 
+            border-radius: 0.75rem; 
+            border: 1px solid rgba(16, 185, 129, 0.3); 
+            background: rgba(16, 185, 129, 0.1); 
+            display: flex; align-items: center; justify-content: center; 
+            color: #10b981; 
+            box-shadow: inset 0 0 10px rgba(16, 185, 129, 0.2);
+        }
+        .apc-title h3 { font-size: 1.4rem; font-weight: 700; color: #ffffff; line-height: 1.2; font-family: var(--font-heading); }
+        .apc-title p { font-size: 0.85rem; color: #94a3b8; margin-top: 0.2rem; font-weight: 500; }
+        
+        .apc-price-box { margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .apc-price-box .price { font-size: 3.5rem; font-weight: 800; color: #ffffff; line-height: 1; font-family: var(--font-heading); }
+        .apc-price-box .unit { font-size: 1rem; color: #94a3b8; margin-left: 0.25rem; font-weight: 500; }
+        .apc-price-box .desc { font-size: 0.85rem; color: #10b981; margin-top: 0.75rem; display: block; font-weight: 600; }
+        
+        .apc-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+        .apc-list li { display: flex; align-items: flex-start; gap: 0.75rem; color: #e2e8f0; font-size: 0.95rem; font-weight: 500; }
+        .apc-list-icon { 
+            display: flex; justify-content: center; align-items: center; 
+            width: 1.25rem; height: 1.25rem; 
+            background-color: #10b981; 
+            border-radius: 50%; flex-shrink: 0; margin-top: 0.15rem; color: #000;
+        }
 
-        /* REVISI 7: AURA BUILD 3-COLUMN AUTO-SCROLLING TESTIMONIALS */
+        /* AUTO-SCROLLING 3-COLUMN TESTIMONIALS (AURA BUILD MOD) */
         .testi-section-wrapper { padding: 4rem 0; text-align: center; }
         .testi-badge { font-size: 0.875rem; font-weight: 600; color: #fb7185; text-transform: uppercase; letter-spacing: 1px; }
         .testi-grid-aura {
@@ -352,7 +361,6 @@
 
     <nav class="nav">
         <div class="container nav-inner">
-            <!-- REVISI 2: Nama Brand & Highlight -->
             <a href="/" class="brand-text">Laundry Karpet Surabaya - <span class="highlight-brand">ANTAR JEMPUT</span></a>
             <a href="https://wa.me/6285780083728?text=Halo,%20saya%20mau%20pesan%20layanan%20cuci%20karpet" class="btn-aura">
                 <span class="iconify" data-icon="mdi:whatsapp" aria-hidden="true" style="font-size: 1.2rem;"></span>
@@ -368,7 +376,6 @@
             <h1>Karpet Bersih, Harum & <span>Bebas Tungau</span> Tanpa Perlu Keluar Rumah!</h1>
             <p>Spesialis Laundry Karpet Surabaya dengan Mesin Ekstraksi Vakum Industri. Proses kilat 1-3 hari, bergaransi 100%, dan GRATIS Antar Jemput se-Surabaya.</p>
             
-            <!-- REVISI 5: Button Modification -->
             <a href="https://wa.me/6285780083728?text=Halo,%20saya%20mau%20pesan%20layanan%20cuci%20karpet" class="btn-aura primary mt-4">
                 <span class="iconify" data-icon="mdi:rocket-launch" aria-hidden="true"></span>
                 Ambil Promo Gratis Antar Jemput Sekarang
@@ -445,7 +452,6 @@
             
             <div class="grid-services">
                 <article class="service-card">
-                    <!-- REVISI 4: Image Aspect Ratio fixed via CSS -->
                     <img src="jasa-cuci-karpet-terdekat-tambaksari-surabaya-antar-jemput.webp" alt="Pekerja mesin industri sedang mencuci karpet rumah di Tambaksari Pacarkembang" class="service-img" loading="lazy" decoding="async">
                     <div class="service-body">
                         <h3>Jasa Cuci Karpet Rumah Tambaksari & Pacarkembang</h3>
@@ -501,7 +507,7 @@
             </div>
         </section>
 
-        <!-- REVISI 6: AURA BUILD PRICING CARD MODIFICATION -->
+        <!-- IMPROVED EYE-CATCHING PRICING CARD -->
         <section class="section reveal">
             <div class="section-header container">
                 <h2>Investasi Terjangkau untuk <span>Kesehatan Anda</span></h2>
@@ -509,21 +515,18 @@
             </div>
             <div class="container pricing-section-wrapper">
                 <div class="aura-pricing-card">
-                    <div class="apc-bg-layer">
-                        <div class="apc-rotator"></div>
-                    </div>
+                    <div class="apc-glow"></div>
                     
                     <div class="apc-header">
                         <div class="apc-title-box">
                             <div class="apc-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path></svg>
                             </div>
                             <div class="apc-title">
                                 <h3>Cuci Karpet Premium</h3>
                                 <p>Solusi Bersih & Bebas Tungau</p>
                             </div>
                         </div>
-                        <div class="apc-radio"></div>
                     </div>
 
                     <div class="apc-price-box">
@@ -531,42 +534,41 @@
                             <span class="price">Rp 15k</span>
                             <span class="unit">/ m²</span>
                         </div>
-                        <span class="desc">Harga mulai dari. Tanpa biaya tersembunyi.</span>
+                        <span class="desc">Harga estimasi mulai dari.</span>
                     </div>
 
                     <ul class="apc-list">
                         <li>
                             <div class="apc-list-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="hsl(240, 15%, 9%)" stroke="hsl(240, 15%, 9%)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
                             </div>
                             Gratis Antar Jemput se-Surabaya
                         </li>
                         <li>
                             <div class="apc-list-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="hsl(240, 15%, 9%)" stroke="hsl(240, 15%, 9%)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
                             </div>
                             Pengerjaan Mesin Cuci Industri
                         </li>
                         <li>
                             <div class="apc-list-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="hsl(240, 15%, 9%)" stroke="hsl(240, 15%, 9%)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
                             </div>
                             Gratis Survei & Ukur di Tempat
                         </li>
                         <li>
                             <div class="apc-list-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="hsl(240, 15%, 9%)" stroke="hsl(240, 15%, 9%)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
                             </div>
-                            Garansi Cuci Ulang Jika Masih Bau
+                            Garansi Cuci Ulang Jika Bau
                         </li>
                     </ul>
                     
-                    <a href="https://wa.me/6285780083728?text=Halo,%20bisa%20info%20estimasi%20harga%20cuci%20karpet%20saya?" class="btn-aura" style="width:100%; margin-top:2rem;">Konsultasi Via WA</a>
+                    <a href="https://wa.me/6285780083728?text=Halo,%20bisa%20info%20estimasi%20harga%20cuci%20karpet%20saya?" class="btn-aura" style="width:100%; margin-top:2.5rem;">Konsultasi Via WA</a>
                 </div>
             </div>
         </section>
 
-        <!-- REVISI 7: AUTO-SCROLLING 3-COLUMN TESTIMONIALS (AURA BUILD MOD) -->
         <section class="section container reveal">
             <div class="testi-section-wrapper">
                 <span class="testi-badge">Ulasan Pelanggan</span>
@@ -577,7 +579,6 @@
                 </div>
 
                 <div class="testi-grid-aura">
-                    <!-- Column 1 - Scroll Up -->
                     <div class="testi-col">
                         <div class="testi-scroll-up">
                             <article class="testi-card-aura">
@@ -606,7 +607,6 @@
                                     </div>
                                 </div>
                             </article>
-                            <!-- Duplicates for seamless loop -->
                             <article class="testi-card-aura">
                                 <blockquote>
                                     <svg class="testi-quote-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path></svg>
@@ -636,7 +636,6 @@
                         </div>
                     </div>
 
-                    <!-- Column 2 - Scroll Down -->
                     <div class="testi-col">
                         <div class="testi-scroll-down">
                             <article class="testi-card-aura">
@@ -665,7 +664,6 @@
                                     </div>
                                 </div>
                             </article>
-                            <!-- Duplicates for seamless loop -->
                             <article class="testi-card-aura">
                                 <blockquote>
                                     <svg class="testi-quote-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path></svg>
@@ -695,7 +693,6 @@
                         </div>
                     </div>
 
-                    <!-- Column 3 - Scroll Up -->
                     <div class="testi-col">
                         <div class="testi-scroll-up">
                             <article class="testi-card-aura">
@@ -724,7 +721,6 @@
                                     </div>
                                 </div>
                             </article>
-                            <!-- Duplicates for seamless loop -->
                             <article class="testi-card-aura">
                                 <blockquote>
                                     <svg class="testi-quote-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path></svg>
@@ -868,7 +864,6 @@
             <div class="container agency-credit">
                 <p style="color:var(--text-sub); font-size:0.9rem; margin-bottom:0.4rem;">© 2026 Laundry Karpet Antar Jemput Surabaya. All Rights Reserved.</p>
                 <p style="color:#475569; font-size:0.85rem;">
-                    <!-- REVISI 3: Footer Agent Updated -->
                     SEO & Web Architecture by <a href="https://ciledugpromo.biz.id/" target="_blank" rel="nofollow noopener noreferrer" style="font-weight:700; color:#64748b; transition:color 0.3s;" onmouseover="this.style.color='#06b6d4'" onmouseout="this.style.color='#64748b'">ciledugpromo.biz.id</a>
                 </p>
             </div>
